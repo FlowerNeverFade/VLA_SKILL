@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
 from safetensors import safe_open
 
 from vla_skill.constants import DEFAULT_BASE_MODEL_PATH, EXPECTED_LORA_TARGET_COUNTS
@@ -9,8 +10,11 @@ from vla_skill.lora import get_lora_group_regex
 
 
 def test_lora_regex_counts_match_pi05_base() -> None:
+    checkpoint = DEFAULT_BASE_MODEL_PATH / "model.safetensors"
+    if not checkpoint.is_file():
+        pytest.skip("PI0.5 checkpoint is external runtime data, not part of the source repository")
     module_names = set()
-    with safe_open(str(DEFAULT_BASE_MODEL_PATH / "model.safetensors"), framework="pt", device="cpu") as handle:
+    with safe_open(str(checkpoint), framework="pt", device="cpu") as handle:
         for key in handle.keys():
             if key.endswith(".weight"):
                 module_names.add(f"model.{key[:-7]}")
