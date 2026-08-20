@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vla-skill"
+version = "0.1.0"
+description = "PI05 per-skill LoRA training and rule-routed inference"
+requires-python = ">=3.11"
+dependencies = [
+  "torch",
+  "torchvision",
+  "lerobot",
+  "transformers",
+  "peft",
+  "datasets",
+  "accelerate",
+  "safetensors",
+  "scipy",
+  "PyYAML",
+  "Pillow",
+  "sentencepiece",
+  "tiktoken",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+wandb = ["wandb", "matplotlib", "pandas"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["vla_skill*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vla-skill-router"
+version = "0.1.0"
+description = "Multi-skill PI05 LoRA routing and skill-sharded training"
+requires-python = ">=3.11"
+dependencies = [
+  "torch",
+  "torchvision",
+  "lerobot",
+  "transformers",
+  "peft",
+  "datasets",
+  "accelerate",
+  "safetensors",
+  "scipy",
+  "numpy",
+  "pandas",
+  "PyYAML",
+  "Pillow",
+  "sentencepiece",
+  "tiktoken",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["vla_skill*", "vla_skill_router*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

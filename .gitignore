@@ -1,0 +1,53 @@
+# Large runtime assets are intentionally kept outside the source release.
+model/
+datasets/
+skill/
+outputs/
+cache/
+logs/
+deps/
+.tmp/
+.logs/
+.venv/
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+*.bin
+*.mp4
+*.avi
+*.h5
+*.hdf5
+*.parquet
+*.npy
+*.npz
+*.pickle
+*.pkl
+
+# Python and test artifacts.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+.coverage
+htmlcov/
+
+# Experiment-specific reports, plotting/upload helpers and generated manifests.
+code/SO101_*.md
+code/plot_*.py
+code/sync_*.py
+code/configs/experiment.example.yaml
+code/robocasa_*manifest.json
+code/robocasa_*manifest.md
+code_router/examples/router_robocasa_so101_active.generated.yaml
+
+# Local credentials and editor files.
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/

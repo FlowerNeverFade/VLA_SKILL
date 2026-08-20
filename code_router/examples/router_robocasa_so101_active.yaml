@@ -1,0 +1,33 @@
+# Generated example. For a real RoboCasa run, create the active-task channel
+# list with `python generate_router_config.py` after registering your dataset.
+base_model_path: ../data/model/pi05_base
+skill_root: ../data/skill
+output_root: ../outputs/pi05_skill_router_lora
+
+channels:
+  - channel_id: robocasa_example_task
+    skill_id: robocasa_example_task
+    lora_group: C
+  - channel_id: so101_pick_cube
+    skill_id: so101_pick_cube
+    lora_group: C
+
+router:
+  type: lora_control
+  feature_hook: pi05_paligemma_with_expert
+  state_embed_dim: 64
+  hidden_dim: 256
+  use_previous_skill: false
+
+train:
+  steps_per_channel: 10
+  batch_size: 2
+  eval_every: 100
+  save_every: 100
+  log_every: 10
+  num_workers: 0
+  lr: 2.5e-5
+  router_lr: 1.0e-4
+  router_ce_weight: 1.0
+  device: cuda
+  dtype: bfloat16
