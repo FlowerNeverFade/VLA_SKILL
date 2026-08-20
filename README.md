@@ -18,6 +18,7 @@ intentionally excluded from Git.
 | `code_router/` | Multi-skill routing, RoboCasa registration, policy-ready caching, DDP, and skill-sharded training. |
 | `code/tests/` | Lightweight data, LoRA-target, conversion, and evaluation tests. |
 | `code_router/tests/` | Router, cache, distributed, schedule, and checkpoint tests. |
+| `pi05_policy_server.py` | Minimal HTTP runtime for one base or skill-LoRA policy. |
 
 ## Runtime files
 
@@ -71,6 +72,17 @@ python train_skill_lora.py --skill-id my_task --group C
 `train_skill_parallel.py` and `eval_base_sharded.py` provide multi-GPU
 training/evaluation helpers. The conversion scripts also support raw LeRobot
 task metadata without materializing a second copy of the source dataset.
+
+After an adapter has been trained, the minimal HTTP runtime can be started from
+the repository root:
+
+```bash
+python pi05_policy_server.py \
+  --skill-root "$VLA_DATA_ROOT/skill" \
+  --skill-id my_task \
+  --base-model-path "$VLA_DATA_ROOT/model/pi05_base" \
+  --adapter-dir "$VLA_DATA_ROOT/outputs/pi05_skill_lora/my_task/C/run/best"
+```
 
 ## Multi-skill router workflow
 
