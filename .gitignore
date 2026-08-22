@@ -9,6 +9,7 @@ deps/
 .tmp/
 .logs/
 .venv/
+.local/
 *.ckpt
 *.pt
 *.pth
@@ -23,6 +24,7 @@ deps/
 *.npz
 *.pickle
 *.pkl
+*.log
 
 # Python and test artifacts.
 __pycache__/

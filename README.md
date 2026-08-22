@@ -19,6 +19,7 @@ intentionally excluded from Git.
 | `code/tests/` | Lightweight data, LoRA-target, conversion, and evaluation tests. |
 | `code_router/tests/` | Router, cache, distributed, schedule, and checkpoint tests. |
 | `pi05_policy_server.py` | Minimal HTTP runtime for one base or skill-LoRA policy. |
+| `.local/` | Machine-specific environment, simulator, download, and viewer helpers (ignored). |
 
 ## Runtime files
 
@@ -37,6 +38,12 @@ Use a separate runtime directory for large files. The default layout is:
 Set `VLA_DATA_ROOT=<runtime>` before running commands. Individual locations can
 be overridden with `VLA_BASE_MODEL_PATH`, `VLA_SKILL_DIR`, `VLA_OUTPUT_ROOT`,
 `VLA_ROUTER_OUTPUT_ROOT`, `VLA_POLICY_CACHE_ROOT`, and `PI05_TOKENIZER_PATH`.
+
+Machine-specific launch scripts, simulator configuration, temporary probes,
+training logs, reports, and generated plots are not part of the source release.
+Local helpers that are still useful are kept under the ignored `.local/`
+directory; the Git repository itself contains only reusable source, tests,
+examples, and project documentation.
 
 ## Install
 
